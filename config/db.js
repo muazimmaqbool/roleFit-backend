@@ -1,5 +1,6 @@
 const mongoose=require("mongoose");
  
+//used inside server.js file
 function connectToDB(){
     mongoose.connect(process.env.MONGODB_URI).then(()=>{
         console.log("Server is connect to the database.")
