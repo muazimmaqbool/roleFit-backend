@@ -21,3 +21,8 @@
         [db.js file sets up connection to mongodb and return connectToDB funtion
             this connecToDB function is called inside serve.js file
         ]
+
+8-> Added 'models' folder inside 'src' and added file inside 'user.model.js' file inside 'models'
+
+9-> 'user.models.js' file contains user schema
+
