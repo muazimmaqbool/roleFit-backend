@@ -1,0 +1,23 @@
+1-> First i setup the node js project: npm init
+
+2-> Then i installed express, mongoose, dotenv packages using: npm i express mongoose dotenv
+
+3-> Then added 'src' folder and inside file: app.js
+        [This file is responsible for: creating server, 
+                                       calling middlewares, 
+                                       importing and using Routes
+        ]
+
+4-> Then added file: server.js 
+        [This file is responsible for: running server
+                                       db connection
+        ]
+
+5-> Then i setup added .gitignore and .env files
+
+6-> Then setup mongodb in mongodb atlas and setup connection string in .env file
+
+7-> Then added 'config' folder and inside it 'db.js' files
+        [db.js file sets up connection to mongodb and return connectToDB funtion
+            this connecToDB function is called inside serve.js file
+        ]
