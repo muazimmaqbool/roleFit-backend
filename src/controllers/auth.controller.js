@@ -20,7 +20,6 @@ async function registerUserController(req,res){
 
     //checking whether the user already exists in the system or not
     const isUserAlreadyExists=await userModel.findOne({
-        //email:email
 
         //checking either on the basis of username or email 
         //i.e check whether their is any user with same username or email and return it
@@ -34,6 +33,8 @@ async function registerUserController(req,res){
             status:"Failed"
         })
     }
+
+    //
 }
 
 module.exports={registerUserController}

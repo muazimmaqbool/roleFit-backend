@@ -35,3 +35,12 @@
 
 13-> added 'auth.controller.js' file inside 'controllers' folder
         Note: it's used inside 'auth.routes.js' file
+
+14-> added 'userRegisterController' function inside 'auth.controller.js' file
+
+15-> installed packaes: npm i bcryptjs jsonwebtoken cookie-parser
+        bcryptjs: for password hashing
+        jsonwebtoken: for jwt tokens
+        cookie-parser: for saving token in cookie
+
+        
