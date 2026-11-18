@@ -11,11 +11,11 @@ app.use(express.json())
 //Note: by default the express server can't read data of req.body by default, so in order to make it read req.body data we are using express.json() middleware
 
 
-/** Importing Routes */
+/** importing Routes */
 const authRouter=require("./routes/auth.routes")
 
 
-//Using Routes
+/** using Routes */
 app.use("/api/auth",authRouter)
 
 
