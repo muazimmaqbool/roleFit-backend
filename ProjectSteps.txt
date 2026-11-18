@@ -26,3 +26,6 @@
 
 9-> 'user.models.js' file contains user schema
 
+10-> added 'routes' folder, it will contains all api route files
+
+11-> added 'auth.routes.js' file which will contains all the authetication related routes/api's like login, register, etc
