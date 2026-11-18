@@ -12,9 +12,11 @@ app.use(express.json())
 
 
 /** Importing Routes */
-
+const authRouter=require("./routes/auth.routes")
 
 
 //Using Routes
+app.use("/api/auth",authRouter)
+
 
 module.exports=app;
