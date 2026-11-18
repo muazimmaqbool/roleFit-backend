@@ -8,25 +8,29 @@ const userModel=require("../models/user.model")
  * @access Public
  */
 async function registerUserController(req,res){
-    const {userName,email,password}=req.body;
+    const {username,email,password}=req.body;
 
     //checking whether user provides all of the requuied fields or not
-    if(!userName || !email || !password){
+    if(!username || !email || !password){
         return res.status(400).json({
             message:"Please provide username, email and password",
             success:false
         })
     }
 
-    //checking whether the email already exists in the system or not
-    const isExists=await userModel.findOne({
-        email:email
+    //checking whether the user already exists in the system or not
+    const isUserAlreadyExists=await userModel.findOne({
+        //email:email
+
+        //checking either on the basis of username or email 
+        //i.e check whether their is any user with same username or email and return it
+        $or:[{username},{email}]
     })
 
     //if email already exists
-    if(isExists){
-        return res.status(422).json({
-            message:"Email already exists",
+    if(isUserAlreadyExists){
+        return res.status(400).json({
+            message:"User already exists",
             status:"Failed"
         })
     }
