@@ -99,9 +99,29 @@ async function loginUserController(req,res){
     })
   }
 
-  //user is found now comparing password
+  //user is found i.e email is valid, now comparing password
   const isValidPassowrd= await user.comparePassword(password)  
   //comparePassword method is defined inside user.mode.js file
+
+  if(!isValidPassowrd){
+    return res.status(401).json({
+        message:"Password is invalid!"
+    })
+  }
+
+  //password is valid
+  const payLoad={userId:user._id}
+  const token=generateToken(payLoad);
+  res.cookie()
+  res.status(200).json({
+    message:"User logged in successfully",
+    user:{
+        _id:user._id,
+        username:user.username,
+        email:user.email
+    },
+    token:token
+  })
 
 }
 
