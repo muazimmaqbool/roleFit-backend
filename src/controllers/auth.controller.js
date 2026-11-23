@@ -1,6 +1,7 @@
 //used inside auth.routes.js file
 
 const userModel=require("../models/user.model")
+const{generateToken}=require("../middlewares/jwt.middleware")
 
 /**
  * @name registerUserController
@@ -44,6 +45,24 @@ async function registerUserController(req,res){
         username,
         email,
         password
+    })
+
+    const payLoad={userId:newUser?._id}
+    
+    const jwtToken=generateToken(payLoad)
+
+    //saving token in cookie
+    res.cookie(jwtToken)
+    
+    //finall response after everything done
+    res.status(200).json({
+        message:"User created successfully",
+        user:{
+            _id:newUser._id,
+            username:newUser.username,
+            email:newUser.email
+        },
+        token:jwtToken
     })
 }
 
