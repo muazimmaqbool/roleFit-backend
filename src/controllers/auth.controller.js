@@ -1,5 +1,3 @@
-//used inside auth.routes.js file
-
 const userModel=require("../models/user.model")
 const{generateToken}=require("../middlewares/jwt.middleware")
 
@@ -72,8 +70,40 @@ async function registerUserController(req,res){
     })
 }
 
-async function loginUserController(res,res){
+
+/**
+ * @name loginUserController
+ * @description login a user expects email and password in request body
+ * @access Public
+ */
+async function loginUserController(req,res){
+    if(!req.body){
+        return res.status(500).json({
+            message:"request body is empty",
+        })
+    }
+
+    const{email,password}=req.body;
+
+    const user=await userModel.findOne({email}).select("+password")
+    //.select("+password"); why we used this, because in user.model.js we have set select:false for password
+   //means password will not get returned that's why we select .select("+password"); so it gets returned for comparison
+
+  //Note if we do this: ).select("password"); i.e not adding + prefix to password then only password is returned, no email and username
+  // console.log("user:",user)
+
+  //user not found i.e email not found in the database
+  if(!user){
+    return res.status(401).json({
+        message:"No user found! please check your email"
+    })
+  }
+
+  //user is found now comparing password
+  const isValidPassowrd= await user.comparePassword(password)  
+  //comparePassword method is defined inside user.mode.js file
 
 }
 
+//used inside auth.routes.js file
 module.exports={registerUserController,loginUserController}

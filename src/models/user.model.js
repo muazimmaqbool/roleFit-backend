@@ -35,6 +35,18 @@ userSchema.pre("save", async function () {
   
 });
 
+//method comparePassword used to compare password entered by the user with the hashed password in db
+userSchema.methods.comparePassowrd=async function(enteredPassword){
+  try{
+    //using bcrypt to compared the provided password with hashed password in db
+    const isMatch=await bcrypt.compare(enteredPassword,this.password);
+    return isMatch;
+  }catch(err){
+    throw err;
+  }
+}
+
+
 //It's data will be stored inside 'users' collection
 const userModel=mongoose.model("users",userSchema)
 module.exports=userModel;
