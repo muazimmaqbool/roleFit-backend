@@ -34,7 +34,12 @@ async function registerUserController(req,res){
         })
     }
 
-    //
+    //if user is new
+    const newUser=await userModel.create({
+        username,
+        email,
+        password
+    })
 }
 
 module.exports={registerUserController}
