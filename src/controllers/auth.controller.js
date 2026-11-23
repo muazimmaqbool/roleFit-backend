@@ -9,6 +9,12 @@ const{generateToken}=require("../middlewares/jwt.middleware")
  * @access Public
  */
 async function registerUserController(req,res){
+    // console.log("req.body:",req.body)
+    if(!req.body){
+        return res.status(500).json({
+            message:"request body is empty",
+        })
+    }
     const {username,email,password}=req.body;
 
     //checking whether user provides all of the requuied fields or not
@@ -62,7 +68,7 @@ async function registerUserController(req,res){
             username:newUser.username,
             email:newUser.email
         },
-        token:jwtToken
+        // token:jwtToken //returning token in response is not required as we are setting token inside cookies
     })
 }
 
