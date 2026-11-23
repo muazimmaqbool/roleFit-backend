@@ -17,9 +17,9 @@ const generateToken=(payLoad)=>{
 //this middleware is used to check whether the user is loggedin or not
 //(via jwt tokwn) which we returned during login and it gets saved in cookies
 //so we will check whether it's inside cookies or not
-const jwtAuth=async(req,res,next)=>{
+const jwtAuthVerify=async(req,res,next)=>{
 
 }
 
 
-module.export={generateToken}
+module.exports={generateToken,jwtAuthVerify}
