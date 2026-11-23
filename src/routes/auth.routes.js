@@ -14,6 +14,13 @@ const authRouter=express.Router();
  */
 authRouter.post("/register",authController.registerUserController)
 
+/**
+ * @route POST : /api/auth/login
+ * @description Login to a existing user
+ * @access Public
+ */
+authRouter.post("/login",authController.loginUserController)
+
 
 //used inside app.js
 module.exports=authRouter

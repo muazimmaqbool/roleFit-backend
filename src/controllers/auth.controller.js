@@ -72,4 +72,8 @@ async function registerUserController(req,res){
     })
 }
 
-module.exports={registerUserController}
+async function loginUserController(res,res){
+
+}
+
+module.exports={registerUserController,loginUserController}
