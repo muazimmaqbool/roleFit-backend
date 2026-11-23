@@ -68,7 +68,7 @@ async function registerUserController(req,res){
             username:newUser.username,
             email:newUser.email
         },
-        // token:jwtToken //returning token in response is not required as we are setting token inside cookies
+        token:jwtToken //returning token in response is not required as we are setting token inside cookies
     })
 }
 
