@@ -34,6 +34,11 @@ async function registerUserController(req,res){
         })
     }
 
+    //Note: Hashing password before saving in user.model.js file
+    //you can also hashpassword here before saving like this:
+    // const hash=await bcrypt.hash(password,10)
+    //then save like this: password:hash in newUser create
+
     //if user is new
     const newUser=await userModel.create({
         username,
