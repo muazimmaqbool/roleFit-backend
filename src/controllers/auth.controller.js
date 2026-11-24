@@ -125,5 +125,14 @@ async function loginUserController(req,res){
 
 }
 
+/**
+ * @name logoutUserController
+ * @description logout a user from the app
+ * @access 
+ */
+async function logoutUserController(req,res){
+
+}
+
 //used inside auth.routes.js file
-module.exports={registerUserController,loginUserController}
+module.exports={registerUserController,loginUserController,logoutUserController}

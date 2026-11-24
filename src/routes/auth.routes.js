@@ -21,6 +21,13 @@ authRouter.post("/register",authController.registerUserController)
  */
 authRouter.post("/login",authController.loginUserController)
 
+/**
+ * @route POST : /api/auth/logout
+ * @description Logout from the app
+ * @access 
+ */
+authRouter.post("/logout",authController.logoutUserController)
+
 
 //used inside app.js
 module.exports=authRouter
