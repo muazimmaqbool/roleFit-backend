@@ -43,4 +43,9 @@
         jsonwebtoken: for jwt tokens
         cookie-parser: for saving token in cookie
 
-        
+16-> added 'jwt.middleware.js' file inside 'middleware' folder
+        [inside this i have two functions responsible for generating and verifying jwt token]
+
+17-> added 'loginUserController' function inside 'auth.controller.js' file
+
+18-> added 'comparePassword' method for comparing passwords while login inside 'user.model.js' file
