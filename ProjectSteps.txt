@@ -49,3 +49,5 @@
 17-> added 'loginUserController' function inside 'auth.controller.js' file
 
 18-> added 'comparePassword' method for comparing passwords while login inside 'user.model.js' file
+
+19-> 

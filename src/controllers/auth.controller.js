@@ -112,7 +112,7 @@ async function loginUserController(req,res){
   //password is valid
   const payLoad={userId:user._id}
   const token=generateToken(payLoad);
-  res.cookie()
+  res.cookie(token)
   res.status(200).json({
     message:"User logged in successfully",
     user:{
