@@ -54,10 +54,10 @@ async function registerUserController(req,res){
 
     const payLoad={userId:newUser?._id}
     
-    const jwtToken=generateToken(payLoad)
+    const token=generateToken(payLoad)
 
     //saving token in cookie
-    res.cookie(jwtToken)
+    res.cookie("token",token)
     
     //finall response after everything done
     res.status(200).json({
@@ -67,7 +67,7 @@ async function registerUserController(req,res){
             username:newUser.username,
             email:newUser.email
         },
-        token:jwtToken //returning token in response is not required as we are setting token inside cookies
+        token:token //returning token in response is not required as we are setting token inside cookies
     })
 }
 
@@ -113,7 +113,9 @@ async function loginUserController(req,res){
   //password is valid
   const payLoad={userId:user._id}
   const token=generateToken(payLoad);
-  res.cookie(token)
+
+  res.cookie("token",token)
+
   res.status(200).json({
     message:"User logged in successfully",
     user:{
@@ -133,6 +135,7 @@ async function loginUserController(req,res){
  */
 async function logoutUserController(req,res){
     const token=req.cookies.token || req.headers.authorization?.split(" ")[1];
+    console.log("token",token)
 
     //token is missing from header and cookies
     if(!token){

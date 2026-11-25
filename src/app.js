@@ -2,6 +2,7 @@
 //by config we mean which api you are using and which middleware
 
 const express=require("express");
+const cookieParser=require("cookie-parser")
 
 //this app constant will have access to all express methods
 const app=express(); //creating server
@@ -10,6 +11,8 @@ const app=express(); //creating server
 app.use(express.json())
 //Note: by default the express server can't read data of req.body by default, so in order to make it read req.body data we are using express.json() middleware
 
+app.use(cookieParser()) 
+// middleware used to save token in cookies check auth.controller.js file
 
 /** importing Routes */
 const authRouter=require("./routes/auth.routes")

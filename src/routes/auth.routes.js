@@ -24,7 +24,7 @@ authRouter.post("/login",authController.loginUserController)
 /**
  * @route POST : /api/auth/logout
  * @description Logout from the app
- * @access 
+ * @access public
  */
 authRouter.post("/logout",authController.logoutUserController)
 
