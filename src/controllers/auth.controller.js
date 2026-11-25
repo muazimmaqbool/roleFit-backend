@@ -1,5 +1,6 @@
 const userModel=require("../models/user.model")
 const{generateToken}=require("../middlewares/jwt.middleware")
+const tokenBlackListModel=require("../models/tokenBlackList.model")
 
 /**
  * @name registerUserController
@@ -127,11 +128,33 @@ async function loginUserController(req,res){
 
 /**
  * @name logoutUserController
- * @description logout a user from the app
- * @access 
+ * @description logout a user from the app, clear token from user and blacklist token
+ * @access public
  */
 async function logoutUserController(req,res){
+    const token=req.cookies.token || req.headers.authorization?.split(" ")[1];
 
+    //token is missing from header and cookies
+    if(!token){
+        return res.status(400).json({
+            message:"Token is missing",
+            success:false
+        })
+    }
+
+    //Now token is present:
+    //adding token to black list so this token won't be used again i.e for hacking/unauthorized
+    await tokenBlackListModel.create({
+        token:token,
+    })
+
+    //clearing cookies
+    res.clearCookie("token")
+
+    res.status(200).json({
+        message:"User logged out successfully",
+        success:true
+    })
 }
 
 //used inside auth.routes.js file
