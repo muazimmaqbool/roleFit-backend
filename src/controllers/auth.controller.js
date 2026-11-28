@@ -135,7 +135,7 @@ async function loginUserController(req,res){
  */
 async function logoutUserController(req,res){
     const token=req.cookies.token || req.headers.authorization?.split(" ")[1];
-    console.log("token",token)
+    // console.log("token",token)
 
     //token is missing from header and cookies
     if(!token){
